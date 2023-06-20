@@ -6,15 +6,16 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SendGrid.Helpers.Errors.Model;
 
-namespace EcommerceApp.Controllers
+namespace EcommerceApp.Controllers.v1
 {
     /// <summary>
     /// OrdersController handles order-related operations. 
     /// It uses the MediatR library for handling commands and queries.
     /// </summary>
     [Authorize]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    [Route("orders")]
     public class OrdersController : ControllerBase
     {
         private readonly IMediator _mediator;

@@ -212,97 +212,97 @@
             Property `User` of type `UserDto` which contains information about the user to be added.
             </summary>
         </member>
-        <member name="T:EcommerceApp.Controllers.Cart_ItemsController">
+        <member name="T:EcommerceApp.Controllers.v1.Cart_ItemsController">
             <summary>
             Cart_ItemsController handles cart item-related operations. 
             It uses the MediatR library for handling commands and queries.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Controllers.Cart_ItemsController.#ctor(MediatR.IMediator)">
+        <member name="M:EcommerceApp.Controllers.v1.Cart_ItemsController.#ctor(MediatR.IMediator)">
             <summary>
             The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
             </summary>
             <param name="mediator"></param>
         </member>
-        <member name="M:EcommerceApp.Controllers.Cart_ItemsController.GetAllCartItems">
+        <member name="M:EcommerceApp.Controllers.v1.Cart_ItemsController.GetAllCartItems">
             <summary>
             HTTP GET endpoint that retrieves all the cart items of a pending order.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EcommerceApp.Controllers.Cart_ItemsController.AddCartItem(EcommerceApp.DTOs.CartItemDto)">
+        <member name="M:EcommerceApp.Controllers.v1.Cart_ItemsController.AddCartItem(EcommerceApp.DTOs.CartItemDto)">
             <summary>
             HTTP POST endpoint for adding a new cart item.
             </summary>
             <param name="cartItemDto"></param>
             <returns></returns>
         </member>
-        <member name="M:EcommerceApp.Controllers.Cart_ItemsController.UpdateCartItem(EcommerceApp.DTOs.CartItemDto)">
+        <member name="M:EcommerceApp.Controllers.v1.Cart_ItemsController.UpdateCartItem(EcommerceApp.DTOs.CartItemDto)">
             <summary>
             HTTP PUT endpoint for updating a cart item.
             </summary>
             <param name="cartItemDto"></param>
             <returns></returns>
         </member>
-        <member name="M:EcommerceApp.Controllers.Cart_ItemsController.DeleteCartItem(System.Guid)">
+        <member name="M:EcommerceApp.Controllers.v1.Cart_ItemsController.DeleteCartItem(System.Guid)">
             <summary>
             HTTP DELETE endpoint for deleting a cart item by its cartItemId.
             </summary>
             <param name="cartItemId"></param>
             <returns></returns>
         </member>
-        <member name="T:EcommerceApp.Controllers.CheckoutController">
+        <member name="T:EcommerceApp.Controllers.v1.CheckoutController">
             <summary>
             CheckoutController handles the checkout operation. 
             It uses the MediatR library for handling commands and queries.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Controllers.CheckoutController.#ctor(MediatR.IMediator)">
+        <member name="M:EcommerceApp.Controllers.v1.CheckoutController.#ctor(MediatR.IMediator)">
             <summary>
             The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
             </summary>
             <param name="mediator"></param>
         </member>
-        <member name="M:EcommerceApp.Controllers.CheckoutController.CheckoutOrder(EcommerceApp.DTOs.OrderDto)">
+        <member name="M:EcommerceApp.Controllers.v1.CheckoutController.CheckoutOrder(EcommerceApp.DTOs.OrderDto)">
             <summary>
             HTTP POST endpoint for checking out an order.
             </summary>
             <param name="orderDto"></param>
             <returns></returns>
         </member>
-        <member name="T:EcommerceApp.Controllers.OrdersController">
+        <member name="T:EcommerceApp.Controllers.v1.OrdersController">
             <summary>
             OrdersController handles order-related operations. 
             It uses the MediatR library for handling commands and queries.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Controllers.OrdersController.#ctor(MediatR.IMediator)">
+        <member name="M:EcommerceApp.Controllers.v1.OrdersController.#ctor(MediatR.IMediator)">
             <summary>
             The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
             </summary>
             <param name="mediator"></param>
         </member>
-        <member name="M:EcommerceApp.Controllers.OrdersController.GetAllOrders">
+        <member name="M:EcommerceApp.Controllers.v1.OrdersController.GetAllOrders">
             <summary>
             HTTP GET endpoint that retrieves all the orders of a user.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:EcommerceApp.Controllers.OrdersController.GetOrderById(System.Guid)">
+        <member name="M:EcommerceApp.Controllers.v1.OrdersController.GetOrderById(System.Guid)">
             <summary>
             HTTP GET endpoint that retrieves an order by its orderId.
             </summary>
             <param name="orderId"></param>
             <returns></returns>
         </member>
-        <member name="M:EcommerceApp.Controllers.OrdersController.UpdateOrder(EcommerceApp.DTOs.OrderDto)">
+        <member name="M:EcommerceApp.Controllers.v1.OrdersController.UpdateOrder(EcommerceApp.DTOs.OrderDto)">
             <summary>
             HTTP PUT endpoint for updating an order.
             </summary>
             <param name="orderDto"></param>
             <returns></returns>
         </member>
-        <member name="M:EcommerceApp.Controllers.OrdersController.DeleteOrder(System.Guid)">
+        <member name="M:EcommerceApp.Controllers.v1.OrdersController.DeleteOrder(System.Guid)">
             <summary>
             HTTP DELETE endpoint for deleting an order by its orderId.
             </summary>
@@ -329,6 +329,129 @@
             <returns></returns>
         </member>
         <member name="M:EcommerceApp.Controllers.UsersController.AddUser(EcommerceApp.DTOs.UserDto)">
+            <summary>
+            HTTP POST endpoint for adding a new user.
+            </summary>
+            <param name="userDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EcommerceApp.Controllers.v2.Cart_ItemsController">
+            <summary>
+            Cart_ItemsController handles cart item-related operations. 
+            It uses the MediatR library for handling commands and queries.
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.Cart_ItemsController.#ctor(MediatR.IMediator)">
+            <summary>
+            The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
+            </summary>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.Cart_ItemsController.GetAllCartItems">
+            <summary>
+            HTTP GET endpoint that retrieves all the cart items of a pending order.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.Cart_ItemsController.AddCartItem(EcommerceApp.DTOs.CartItemDto)">
+            <summary>
+            HTTP POST endpoint for adding a new cart item.
+            </summary>
+            <param name="cartItemDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.Cart_ItemsController.UpdateCartItem(EcommerceApp.DTOs.CartItemDto)">
+            <summary>
+            HTTP PUT endpoint for updating a cart item.
+            </summary>
+            <param name="cartItemDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.Cart_ItemsController.DeleteCartItem(System.Guid)">
+            <summary>
+            HTTP DELETE endpoint for deleting a cart item by its cartItemId.
+            </summary>
+            <param name="cartItemId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EcommerceApp.Controllers.v2.CheckoutController">
+            <summary>
+            CheckoutController handles the checkout operation. 
+            It uses the MediatR library for handling commands and queries.
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.CheckoutController.#ctor(MediatR.IMediator)">
+            <summary>
+            The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
+            </summary>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.CheckoutController.CheckoutOrder(EcommerceApp.DTOs.OrderDto)">
+            <summary>
+            HTTP POST endpoint for checking out an order.
+            </summary>
+            <param name="orderDto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EcommerceApp.Controllers.v2.OrdersController">
+            <summary>
+            OrdersController handles order-related operations. 
+            It uses the MediatR library for handling commands and queries.
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.OrdersController.#ctor(MediatR.IMediator)">
+            <summary>
+            The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
+            </summary>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.OrdersController.GetAllOrders">
+            <summary>
+            HTTP GET endpoint that retrieves all the orders of a user.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.OrdersController.GetOrderById(System.Guid)">
+            <summary>
+            HTTP GET endpoint that retrieves an order by its orderId.
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.OrdersController.UpdateOrder(EcommerceApp.DTOs.OrderDto)">
+            <summary>
+            HTTP PUT endpoint for updating an order.
+            </summary>
+            <param name="orderDto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.OrdersController.DeleteOrder(System.Guid)">
+            <summary>
+            HTTP DELETE endpoint for deleting an order by its orderId.
+            </summary>
+            <param name="orderId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:EcommerceApp.Controllers.v2.UsersController">
+            <summary>
+            UsersController handles user-related operations. 
+            It uses the MediatR library for handling commands and queries.
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.UsersController.#ctor(MediatR.IMediator)">
+            <summary>
+            The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
+            </summary>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.UsersController.GetUserById(System.Guid)">
+            <summary>
+            HTTP GET endpoint that retrieves a user by their userId.
+            </summary>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EcommerceApp.Controllers.v2.UsersController.AddUser(EcommerceApp.DTOs.UserDto)">
             <summary>
             HTTP POST endpoint for adding a new user.
             </summary>
@@ -420,17 +543,18 @@
         </member>
         <member name="T:EcommerceApp.DTOs.UserDto">
             <summary>
-            
+            UserDto represents a Data Transfer Object (DTO) for an user. 
+            It contains properties that are used for transferring user data between different layers or components of the application.
             </summary>
         </member>
         <member name="P:EcommerceApp.DTOs.UserDto.UserId">
             <summary>
-            
+            UserId represents the unique identifier for the user.
             </summary>
         </member>
         <member name="P:EcommerceApp.DTOs.UserDto.Name">
             <summary>
-            
+            Name represents the name of the user.
             </summary>
         </member>
         <member name="T:EcommerceApp.Entities.CartItemEntity">

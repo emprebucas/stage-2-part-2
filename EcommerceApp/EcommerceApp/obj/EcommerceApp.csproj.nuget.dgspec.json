@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emprebucas\\source\\repos\\EcommerceApp\\EcommerceApp\\EcommerceApp.csproj": {}
+    "D:\\Desktop\\on github\\stage-2-part-2\\EcommerceApp\\EcommerceApp\\EcommerceApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emprebucas\\source\\repos\\EcommerceApp\\EcommerceApp\\EcommerceApp.csproj": {
+    "D:\\Desktop\\on github\\stage-2-part-2\\EcommerceApp\\EcommerceApp\\EcommerceApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emprebucas\\source\\repos\\EcommerceApp\\EcommerceApp\\EcommerceApp.csproj",
+        "projectUniqueName": "D:\\Desktop\\on github\\stage-2-part-2\\EcommerceApp\\EcommerceApp\\EcommerceApp.csproj",
         "projectName": "EcommerceApp",
-        "projectPath": "C:\\Users\\emprebucas\\source\\repos\\EcommerceApp\\EcommerceApp\\EcommerceApp.csproj",
+        "projectPath": "D:\\Desktop\\on github\\stage-2-part-2\\EcommerceApp\\EcommerceApp\\EcommerceApp.csproj",
         "packagesPath": "C:\\Users\\emprebucas\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emprebucas\\source\\repos\\EcommerceApp\\EcommerceApp\\obj\\",
+        "outputPath": "D:\\Desktop\\on github\\stage-2-part-2\\EcommerceApp\\EcommerceApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\emprebucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -52,6 +52,10 @@
               "target": "Package",
               "version": "[2.0.123, )"
             },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.5.2, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.0.1, )"
@@ -59,6 +63,14 @@
             "Microsoft.AspNetCore.Authentication": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.1.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+              "target": "Package",
+              "version": "[5.1.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

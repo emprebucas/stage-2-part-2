@@ -3,13 +3,15 @@ using EcommerceApp.Data;
 using EcommerceApp.Interfaces;
 using EcommerceApp.Repositories;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Microsoft.VisualBasic;
 using Microsoft.Win32;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace EcommerceApp
 {
@@ -51,10 +53,30 @@ namespace EcommerceApp
                         services.AddControllers();
                         services.AddEndpointsApiExplorer();
 
+                        services.AddApiVersioning(options =>
+                        {
+                            options.ReportApiVersions = true;
+                            options.DefaultApiVersion = new ApiVersion(1, 0);
+                            options.AssumeDefaultVersionWhenUnspecified = true;
+                        });
+
+                        services.AddVersionedApiExplorer(options =>
+                        {
+                            options.GroupNameFormat = "'v'VVV";
+                            options.SubstituteApiVersionInUrl = true;
+                        });
+
                         // adds Swagger for generating API documentation
                         services.AddSwaggerGen(c =>
                         {
-                            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ecommerce API", Version = "v1" });
+                            //c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ecommerce API", Version = "v1" });
+
+                            var provider = services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
+
+                            foreach (var description in provider.ApiVersionDescriptions)
+                            {
+                                c.SwaggerDoc(description.GroupName, new OpenApiInfo { Title = "Ecommerce API", Version = description.ApiVersion.ToString() });
+                            }
 
                             // registers the `AddCustomHeaderParameter` class as an operation filter for Swagger
                             // ensures that the custom header parameter is included in the generated Swagger documentation for all API operations
@@ -121,7 +143,13 @@ namespace EcommerceApp
                         app.UseSwagger();
                         app.UseSwaggerUI(c =>
                         {
-                            c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecommerce API V1");
+                            //c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecommerce API V1");
+                            var provider = app.ApplicationServices.GetRequiredService<IApiVersionDescriptionProvider>();
+
+                            foreach (var description in provider.ApiVersionDescriptions.Reverse())
+                            {
+                                c.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", $"Ecommerce API {description.GroupName}");
+                            }
                         });
 
                         // enables routing, authentication, and authorization

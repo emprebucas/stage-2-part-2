@@ -11,8 +11,11 @@
           "AutoMapper": "12.0.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.1",
           "Dapper": "2.0.123",
+          "FluentValidation": "11.5.2",
           "MediatR": "12.0.1",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
+          "Microsoft.AspNetCore.Mvc.Versioning": "5.1.0",
+          "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": "5.1.0",
           "Microsoft.EntityFrameworkCore.Design": "7.0.5",
           "Microsoft.EntityFrameworkCore.Relational": "7.0.5",
           "Microsoft.Extensions.DependencyInjection": "7.0.0",
@@ -52,6 +55,14 @@
           "lib/net5.0/Dapper.dll": {
             "assemblyVersion": "2.0.0.0",
             "fileVersion": "2.0.123.33578"
+          }
+        }
+      },
+      "FluentValidation/11.5.2": {
+        "runtime": {
+          "lib/net6.0/FluentValidation.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.5.2.0"
           }
         }
       },
@@ -162,6 +173,25 @@
       "Microsoft.AspNetCore.Http.Features/2.2.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "7.0.0"
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.8270.41513"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Versioning": "5.1.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.8270.41534"
+          }
         }
       },
       "Microsoft.AspNetCore.WebUtilities/2.2.0": {
@@ -578,6 +608,13 @@
       "path": "dapper/2.0.123",
       "hashPath": "dapper.2.0.123.nupkg.sha512"
     },
+    "FluentValidation/11.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kj/hW/iusp2zq1Vt1YPLgDj6UG0DhoJXGkLwjLwm3j7vUtRF8DVA5vHJfItG3BxDjLWJUR2pvw8fK7rnuysZNA==",
+      "path": "fluentvalidation/11.5.2",
+      "hashPath": "fluentvalidation.11.5.2.nupkg.sha512"
+    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
@@ -682,6 +719,20 @@
       "sha512": "sha512-ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
       "path": "microsoft.aspnetcore.http.features/2.2.0",
       "hashPath": "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UX8w9BlCiZpr6Ox4YAve1w0CkI1CAovukGNzKd7v0+5pZc8lzuG5tRovucr1RWIKHs0E/Yx8563CN7KzaB3bpw==",
+      "path": "microsoft.aspnetcore.mvc.versioning/5.1.0",
+      "hashPath": "microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-p45pSXCJPbx+p9gFNNQPUC547KpqP5cRJke6aygq/M7UzCrJNmJNqD+65pIpY4muYbINqlgrC47h1oc0WbuP1g==",
+      "path": "microsoft.aspnetcore.mvc.versioning.apiexplorer/5.1.0",
+      "hashPath": "microsoft.aspnetcore.mvc.versioning.apiexplorer.5.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.WebUtilities/2.2.0": {
       "type": "package",

@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace EcommerceApp.DTOs
+﻿namespace EcommerceApp.DTOs
 {
     /// <summary>
     /// CartItemDto represents a Data Transfer Object (DTO) for a cart item. 

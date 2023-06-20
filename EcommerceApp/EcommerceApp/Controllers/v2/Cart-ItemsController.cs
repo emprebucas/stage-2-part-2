@@ -7,15 +7,16 @@ using Microsoft.AspNetCore.Mvc;
 using SendGrid.Helpers.Errors.Model;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
-namespace EcommerceApp.Controllers
+namespace EcommerceApp.Controllers.v2
 {
     /// <summary>
     /// Cart_ItemsController handles cart item-related operations. 
     /// It uses the MediatR library for handling commands and queries.
     /// </summary>
     [Authorize]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    [Route("cart-items")]
     public class Cart_ItemsController : ControllerBase
     {
         private readonly IMediator _mediator;
