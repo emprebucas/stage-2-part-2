@@ -2,7 +2,6 @@
 using EcommerceApp.Commands;
 using EcommerceApp.Entities;
 using EcommerceApp.Interfaces;
-using EcommerceApp.Models;
 using MediatR;
 
 namespace EcommerceApp.CommandHandlers

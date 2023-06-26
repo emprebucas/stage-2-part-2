@@ -166,7 +166,6 @@ D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\S
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\System.CodeDom.dll
-D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\System.Security.Permissions.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\System.Text.Encodings.Web.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\System.Text.Json.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
@@ -193,3 +192,10 @@ D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\obj\Debug\net6.0\E
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\obj\Debug\net6.0\EcommerceApp.genruntimeconfig.cache
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\obj\Debug\net6.0\ref\EcommerceApp.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\FluentValidation.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Autofac.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Autofac.Extensions.DependencyInjection.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\MicroElements.Swashbuckle.FluentValidation.dll

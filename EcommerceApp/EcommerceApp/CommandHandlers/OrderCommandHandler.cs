@@ -2,7 +2,6 @@
 using EcommerceApp.Commands;
 using EcommerceApp.Entities;
 using EcommerceApp.Interfaces;
-using EcommerceApp.Models;
 using MediatR;
 
 namespace EcommerceApp.CommandHandlers
@@ -56,7 +55,7 @@ namespace EcommerceApp.CommandHandlers
         public async Task<Unit> Handle(CheckoutOrderCommand request, CancellationToken cancellationToken)
         {
             var order = _mapper.Map<OrderEntity>(request.Order);
-
+            
             await _orderRepository.CheckoutOrderAsync(order);
             return Unit.Value;
         }

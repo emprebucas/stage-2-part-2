@@ -17,6 +17,17 @@
             <param name="operation"></param>
             <param name="context"></param>
         </member>
+        <member name="T:EcommerceApp.DependencyInjection.AutofacModule">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.DependencyInjection.AutofacModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+        </member>
         <member name="T:EcommerceApp.BasicAuthenticationHandler">
             <summary>
             BasicAuthenticationHandler is an authentication handler.
@@ -651,6 +662,18 @@
             The user's name in string.
             </summary>
         </member>
+        <member name="T:EcommerceApp.FluentValidationOperationFilter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.FluentValidationOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
+            <summary>
+            
+            </summary>
+            <param name="operation"></param>
+            <param name="context"></param>
+        </member>
         <member name="T:EcommerceApp.HttpContextHelper">
             <summary>
             HttpContextHelper used to access and retrieve the 'x-user-id' from the HTTP context
@@ -888,6 +911,29 @@
             <summary>
             Name represents the name of the user.
             </summary>
+        </member>
+        <member name="T:EcommerceApp.PipelineBehaviors.ValidationPipelineBehavior`2">
+            <summary>
+            
+            </summary>
+            <typeparam name="TRequest"></typeparam>
+            <typeparam name="TResponse"></typeparam>
+        </member>
+        <member name="M:EcommerceApp.PipelineBehaviors.ValidationPipelineBehavior`2.#ctor(FluentValidation.IValidator{`0})">
+            <summary>
+            
+            </summary>
+            <param name="validator"></param>
+        </member>
+        <member name="M:EcommerceApp.PipelineBehaviors.ValidationPipelineBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <param name="next"></param>
+            <returns></returns>
+            <exception cref="T:FluentValidation.ValidationException"></exception>
         </member>
         <member name="T:EcommerceApp.Program">
             <summary>
@@ -1148,6 +1194,36 @@
             <param name="user"></param>
             <returns></returns>
             <exception cref="T:SendGrid.Helpers.Errors.Model.BadRequestException"></exception>
+        </member>
+        <member name="T:EcommerceApp.Validators.CartItemValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.CartItemValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.OrderValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.OrderValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.UserValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.UserValidator.#ctor">
+            <summary>
+            
+            </summary>
         </member>
     </members>
 </doc>

@@ -1,17 +1,18 @@
-using System.Reflection;
 using EcommerceApp.Data;
 using EcommerceApp.Interfaces;
+using EcommerceApp.PipelineBehaviors;
 using EcommerceApp.Repositories;
+using EcommerceApp.Validators;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using MediatR;
+using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
-using Microsoft.VisualBasic;
-using Microsoft.Win32;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Versioning;
+using System.Reflection;
 
 namespace EcommerceApp
 {
@@ -37,6 +38,12 @@ namespace EcommerceApp
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                //.UseServiceProviderFactory(new AutofacServiceProviderFactory()) // Use Autofac as the service provider
+                //.ConfigureContainer<ContainerBuilder>(builder =>
+                //{
+                //    // Register your Autofac modules
+                //    builder.RegisterModule(new AutofacModule());
+                //})
                 // configures the application to use a JSON configuration file named "appsettings.json"
                 .ConfigureAppConfiguration((hostContext, config) =>
                 {
@@ -66,6 +73,18 @@ namespace EcommerceApp
                             options.SubstituteApiVersionInUrl = true;
                         });
 
+                        // Register FV validators
+                        services.AddValidatorsFromAssemblyContaining<OrderValidator>(lifetime: ServiceLifetime.Scoped);
+                        services.AddValidatorsFromAssemblyContaining<CartItemValidator>(lifetime: ServiceLifetime.Scoped);
+                        services.AddValidatorsFromAssemblyContaining<UserValidator>(lifetime: ServiceLifetime.Scoped);
+
+                        // Add FV to Asp.net
+                        services.AddFluentValidationAutoValidation();
+
+                        services.AddFluentValidationRulesToSwagger();
+
+                        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+
                         // adds Swagger for generating API documentation
                         services.AddSwaggerGen(c =>
                         {
@@ -77,6 +96,8 @@ namespace EcommerceApp
                             {
                                 c.SwaggerDoc(description.GroupName, new OpenApiInfo { Title = "Ecommerce API", Version = description.ApiVersion.ToString() });
                             }
+
+                            c.OperationFilter<FluentValidationOperationFilter>();
 
                             // registers the `AddCustomHeaderParameter` class as an operation filter for Swagger
                             // ensures that the custom header parameter is included in the generated Swagger documentation for all API operations
@@ -97,7 +118,7 @@ namespace EcommerceApp
 
                         // registers the `ECommerceDbContext` as a service with the dependency injection container
                         // allows the application to use `ECommerceDbContext` for interacting with the database
-                       services.AddDbContext<ECommerceDbContext>(options =>
+                        services.AddDbContext<ECommerceDbContext>(options =>
                         {
                             options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 33)), mysqlOptions =>
                             {
@@ -154,6 +175,7 @@ namespace EcommerceApp
 
                         // enables routing, authentication, and authorization
                         app.UseRouting();
+
                         app.UseAuthentication();
                         app.UseAuthorization();
 
