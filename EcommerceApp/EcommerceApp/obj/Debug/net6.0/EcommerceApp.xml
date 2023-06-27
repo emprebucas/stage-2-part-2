@@ -1195,6 +1195,36 @@
             <returns></returns>
             <exception cref="T:SendGrid.Helpers.Errors.Model.BadRequestException"></exception>
         </member>
+        <member name="T:EcommerceApp.Validators.AddCartItemCommandValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.AddCartItemCommandValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.AddUserCommandValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.AddUserCommandValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.CartItemQueryValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.CartItemQueryValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:EcommerceApp.Validators.CartItemValidator">
             <summary>
             
@@ -1205,12 +1235,92 @@
             
             </summary>
         </member>
+        <member name="T:EcommerceApp.Validators.CheckoutOrderCommandValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.CheckoutOrderCommandValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.DeleteCartItemCommandValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.DeleteCartItemCommandValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.DeleteOrderCommandValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.DeleteOrderCommandValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.GetAllOrdersQueryValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.GetAllOrdersQueryValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.GetOrderByIdQueryValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.GetOrderByIdQueryValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.GetUserByIdQueryValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.GetUserByIdQueryValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:EcommerceApp.Validators.OrderValidator">
             <summary>
             
             </summary>
         </member>
         <member name="M:EcommerceApp.Validators.OrderValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.UpdateCartItemCommandValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.UpdateCartItemCommandValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:EcommerceApp.Validators.UpdateOrderCommandValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:EcommerceApp.Validators.UpdateOrderCommandValidator.#ctor">
             <summary>
             
             </summary>

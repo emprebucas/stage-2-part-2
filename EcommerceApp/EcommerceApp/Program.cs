@@ -1,16 +1,12 @@
-using EcommerceApp.Data;
-using EcommerceApp.Interfaces;
-using EcommerceApp.PipelineBehaviors;
-using EcommerceApp.Repositories;
-using EcommerceApp.Validators;
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using EcommerceApp.DependencyInjection;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using MediatR;
 using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -37,13 +33,12 @@ namespace EcommerceApp
         /// <param name="args"></param>
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                //.UseServiceProviderFactory(new AutofacServiceProviderFactory()) // Use Autofac as the service provider
-                //.ConfigureContainer<ContainerBuilder>(builder =>
-                //{
-                //    // Register your Autofac modules
-                //    builder.RegisterModule(new AutofacModule());
-                //})
+            Host.CreateDefaultBuilder(args).UseServiceProviderFactory(new AutofacServiceProviderFactory()) // Use Autofac as the service provider
+                .ConfigureContainer<ContainerBuilder>(builder =>
+                {
+                    // Register your Autofac modules
+                    builder.RegisterModule(new AutofacModule());
+                })
                 // configures the application to use a JSON configuration file named "appsettings.json"
                 .ConfigureAppConfiguration((hostContext, config) =>
                 {
@@ -73,17 +68,12 @@ namespace EcommerceApp
                             options.SubstituteApiVersionInUrl = true;
                         });
 
-                        // Register FV validators
-                        services.AddValidatorsFromAssemblyContaining<OrderValidator>(lifetime: ServiceLifetime.Scoped);
-                        services.AddValidatorsFromAssemblyContaining<CartItemValidator>(lifetime: ServiceLifetime.Scoped);
-                        services.AddValidatorsFromAssemblyContaining<UserValidator>(lifetime: ServiceLifetime.Scoped);
-
                         // Add FV to Asp.net
                         services.AddFluentValidationAutoValidation();
 
                         services.AddFluentValidationRulesToSwagger();
 
-                        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
+                        //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
 
                         // adds Swagger for generating API documentation
                         services.AddSwaggerGen(c =>
@@ -109,46 +99,10 @@ namespace EcommerceApp
                             c.IncludeXmlComments(xmlPath);
                         });
 
-                        // sets up a MySQL database using the connection string retrieved from the "ECommerceDb" key in the configuration
-
-                        // retrieves the configuration object
-                        var configuration = hostContext.Configuration;
-                        // retrieves the connection string from  the application's configuration (appsettings.json)
-                        var connectionString = configuration.GetConnectionString("ECommerceDb");
-
-                        // registers the `ECommerceDbContext` as a service with the dependency injection container
-                        // allows the application to use `ECommerceDbContext` for interacting with the database
-                        services.AddDbContext<ECommerceDbContext>(options =>
-                        {
-                            options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 33)), mysqlOptions =>
-                            {
-                                // enables automatic retry on database failures.
-                                // if a database operation fails, Entity Framework Core will automatically retry the operation a certain number of times before throwing an exception
-                                mysqlOptions.EnableRetryOnFailure();
-                            }).EnableServiceProviderCaching(false); // disables the caching of the service provider for the database context
-                        });
-
-                        // registers repositories and sets up dependency injection for repositories
-                        services.AddScoped<IOrderRepository, OrderRepository>();
-                        services.AddScoped<ICartItemRepository, CartItemRepository>();
-                        services.AddScoped<IUserRepository, UserRepository>();
-
-                        // adds MediatR for implementing the Mediator pattern for handling commands and queries
-                        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
-                        // called with a configuration lambda expression that registers the services from the assembly where the `Program` class is defined which allows MediatR to automatically discover and register the command and query handlers defined in that assembly
-
-                        //adds AutoMapper for object mapping
-                        services.AddAutoMapper(typeof(Mapping));
-                        // called with the `typeof(Mapping)` parameter, which specifies the assembly containing the mapping profiles which allows AutoMapper to discover and configure the mapping profiles defined in that assembly
-
                         // adds authentication and authorization
                         // uses a custom authentication scheme named "BasicAuthentication" with a corresponding handler (BasicAuthenticationHandler.cs)
                         services.AddAuthentication("BasicAuthentication").AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
                         services.AddAuthorization();
-
-                        // configures the HTTP context accessor and a custom HttpContextHelper (HttpContextHelper.cs)
-                        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-                        services.AddSingleton<HttpContextHelper>();
 
                     })
                     // configures the application's request processing pipeline

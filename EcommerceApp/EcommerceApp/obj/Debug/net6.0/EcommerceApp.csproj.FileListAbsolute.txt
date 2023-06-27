@@ -199,3 +199,10 @@ D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\M
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Autofac.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Autofac.Extensions.DependencyInjection.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\MicroElements.Swashbuckle.FluentValidation.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\MediatR.Extensions.Autofac.DependencyInjection.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Json.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll
