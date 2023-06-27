@@ -15,8 +15,9 @@ namespace EcommerceApp.Repositories
     public class OrderRepository : IOrderRepository
     {
         private readonly ECommerceDbContext _dbContext;
-        private readonly IConfiguration _configuration;
         private readonly HttpContextHelper _httpContextHelper;
+        private readonly IConfiguration _configuration;
+        private readonly ILogger<OrderRepository> _logger;
 
         /// <summary>
         /// The constructor takes the `ECommerceDbContext`, `IConfiguration`, and `HttpContextHelper` objects.
@@ -27,11 +28,13 @@ namespace EcommerceApp.Repositories
         /// <param name="dbContext"></param>
         /// <param name="configuration"></param>
         /// <param name="httpContextHelper"></param>
-        public OrderRepository(ECommerceDbContext dbContext, IConfiguration configuration, HttpContextHelper httpContextHelper)
+        /// <param name="logger"></param>
+        public OrderRepository(ECommerceDbContext dbContext, IConfiguration configuration, HttpContextHelper httpContextHelper, ILogger<OrderRepository> logger)
         {
             _dbContext = dbContext;
             _configuration = configuration;
             _httpContextHelper = httpContextHelper;
+            _logger = logger;
         }
 
         /// <summary>
@@ -53,9 +56,11 @@ namespace EcommerceApp.Repositories
             {
                 if (orders.Any())
                 {
+                    _logger.LogInformation("Orders retrieved successfully.");
                     return orders.AsList();
                 }
             }
+            _logger.LogError("Error retrieving orders.");
             throw new BadRequestException("User does not have any order.");
         }
 
@@ -77,9 +82,10 @@ namespace EcommerceApp.Repositories
 
             if (order == null)
             {
+                _logger.LogError("Error retrieving order.");
                 throw new BadRequestException("Order does not exist.");
             }
-
+            _logger.LogInformation("Order retrieved successfully.");
             return order;
         }
 
@@ -95,6 +101,7 @@ namespace EcommerceApp.Repositories
 
             if (!userExists)
             {
+                _logger.LogError("Error updating order.");
                 throw new BadRequestException("Cannot update order. User does not exist.");
             }
 
@@ -102,6 +109,7 @@ namespace EcommerceApp.Repositories
 
             if (!orderExists)
             {
+                _logger.LogError("Error updating order.");
                 throw new BadRequestException("Cannot update order. Order does not exist for this user.");
             }
 
@@ -109,6 +117,7 @@ namespace EcommerceApp.Repositories
 
             if (!isPendingOrder)
             {
+                _logger.LogError("Error updating order.");
                 throw new BadRequestException("Cannot update order. Order is already processed or cancelled.");
             }
 
@@ -116,7 +125,7 @@ namespace EcommerceApp.Repositories
 
             _dbContext.Orders.Update(order);
             await _dbContext.SaveChangesAsync();
-
+            _logger.LogInformation("Order updated successfully.");
         }
 
         /// <summary>
@@ -131,6 +140,7 @@ namespace EcommerceApp.Repositories
 
             if (!userExists)
             {
+                _logger.LogError("Error checking out order.");
                 throw new BadRequestException("Cannot checkout order. User does not exist.");
             }
 
@@ -138,6 +148,7 @@ namespace EcommerceApp.Repositories
 
             if (!orderExists)
             {
+                _logger.LogError("Error checking out order.");
                 throw new BadRequestException("Cannot checkout order. Order does not exist for this user.");
             }
 
@@ -145,6 +156,7 @@ namespace EcommerceApp.Repositories
 
             if (!userHasPendingOrder)
             {
+                _logger.LogError("Error checking out order.");
                 throw new BadRequestException("Cannot checkout order. Order is already either processed or cancelled.");
             }
 
@@ -152,6 +164,7 @@ namespace EcommerceApp.Repositories
 
             if (!orderHasCartItems)
             {
+                _logger.LogError("Error checking out order.");
                 throw new BadRequestException("Cannot checkout order. Order has no cart items.");
             }
 
@@ -160,7 +173,7 @@ namespace EcommerceApp.Repositories
 
             _dbContext.Orders.Update(order);
             await _dbContext.SaveChangesAsync();
-         
+            _logger.LogInformation("Order checked out successfully.");
         }
 
         /// <summary>
@@ -174,12 +187,13 @@ namespace EcommerceApp.Repositories
 
             if (order == null)
             {
+                _logger.LogError("Error deleting order.");
                 throw new BadRequestException("Cannot delete order. Order does not exist.");
             }
 
             _dbContext.Orders.Remove(order);
             await _dbContext.SaveChangesAsync();
-
+            _logger.LogInformation("Order deleted successfully.");
         }
 
     }

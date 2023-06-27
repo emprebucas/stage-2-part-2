@@ -4,6 +4,8 @@ using EcommerceApp.Interfaces;
 using EcommerceApp.Entities;
 using EcommerceApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using MySqlConnector;
 using SendGrid.Helpers.Errors.Model;
 
@@ -16,6 +18,7 @@ namespace EcommerceApp.Repositories
     {
         private readonly ECommerceDbContext _dbContext;
         private readonly IConfiguration _configuration;
+        private readonly ILogger<UserRepository> _logger;
 
         /// <summary>
         /// The constructor takes the `ECommerceDbContext` and `IConfiguration` objects.
@@ -24,10 +27,12 @@ namespace EcommerceApp.Repositories
         /// </summary>
         /// <param name="dbContext"></param>
         /// <param name="configuration"></param>
-        public UserRepository(ECommerceDbContext dbContext, IConfiguration configuration)
+        /// <param name="logger"></param>
+        public UserRepository(ECommerceDbContext dbContext, IConfiguration configuration, ILogger<UserRepository> logger)
         {
             _dbContext = dbContext;
             _configuration = configuration;
+            _logger = logger;
         }
 
         /// <summary>
@@ -48,9 +53,11 @@ namespace EcommerceApp.Repositories
 
             if (user == null)
             {
+                _logger.LogError("Error retrieving user.");
                 throw new BadRequestException("User does not exist.");
             }
 
+            _logger.LogInformation("User retrieved successfully.");
             return user;
         }
 
@@ -66,11 +73,13 @@ namespace EcommerceApp.Repositories
 
             if (userExists)
             {
+                _logger.LogError("Error adding user.");
                 throw new BadRequestException("Cannot add user. User already exists.");
             }
 
             _dbContext.Users.Add(user);
             await _dbContext.SaveChangesAsync();
+            _logger.LogInformation("User added successfully.");
         }
     }
 

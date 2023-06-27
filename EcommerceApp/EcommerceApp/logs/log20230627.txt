@@ -1,0 +1,26 @@
+2023-06-27 13:36:41.249 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization header.
+2023-06-27 13:36:55.878 +08:00 [INF] User retrieved successfully.
+2023-06-27 13:37:29.229 +08:00 [ERR] Error adding cart item.
+2023-06-27 13:37:52.117 +08:00 [ERR] Error retrieving user.
+2023-06-27 13:38:00.418 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Invalid Authorization header. User is null
+2023-06-27 13:38:00.428 +08:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2023-06-27 14:06:10.079 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization header.
+2023-06-27 14:06:29.976 +08:00 [INF] User retrieved successfully.
+2023-06-27 14:06:39.904 +08:00 [ERR] Error retrieving orders.
+2023-06-27 14:08:24.513 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization header.
+2023-06-27 14:08:41.462 +08:00 [ERR] Error adding user.
+2023-06-27 14:08:52.586 +08:00 [INF] User retrieved successfully.
+2023-06-27 14:08:59.329 +08:00 [ERR] Error retrieving orders.
+2023-06-27 14:09:05.470 +08:00 [INF] Orders retrieved successfully.
+2023-06-27 14:09:18.193 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Invalid Authorization header. User is null
+2023-06-27 14:09:18.213 +08:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2023-06-27 14:09:29.384 +08:00 [ERR] Error retrieving cart items.
+2023-06-27 14:09:35.395 +08:00 [INF] Cart items retrieved successfully.
+2023-06-27 14:11:04.944 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization header.
+2023-06-27 14:11:21.245 +08:00 [INF] User retrieved successfully.
+2023-06-27 14:11:28.367 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Invalid Authorization header. User is null
+2023-06-27 14:11:28.386 +08:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2023-06-27 14:11:34.504 +08:00 [INF] User retrieved successfully.
+2023-06-27 14:11:39.993 +08:00 [ERR] Error retrieving user.
+2023-06-27 14:11:49.174 +08:00 [INF] Orders retrieved successfully.
+2023-06-27 14:11:55.428 +08:00 [ERR] Error retrieving orders.

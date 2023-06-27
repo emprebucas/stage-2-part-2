@@ -10,6 +10,8 @@ using EcommerceApp.Validators;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Serilog;
+using Serilog.Extensions.Logging;
 
 namespace EcommerceApp.DependencyInjection
 {
@@ -139,7 +141,18 @@ namespace EcommerceApp.DependencyInjection
             builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance();
             builder.RegisterType<HttpContextHelper>().SingleInstance();
 
-            
+            //builder.Register(ctx =>
+            //{
+            //    var loggerFactory = new SerilogLoggerFactory();
+            //    var logger = new LoggerConfiguration()
+            //        // Configure Serilog here as needed
+            //        .CreateLogger();
+
+            //    loggerFactory.AddSerilog(logger);
+
+            //    return loggerFactory.CreateLogger<UserRepository>();
+            //}).As<ILogger<UserRepository>>().InstancePerLifetimeScope();
+
 
             base.Load(builder);
         }

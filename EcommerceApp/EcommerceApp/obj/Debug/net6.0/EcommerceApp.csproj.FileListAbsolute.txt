@@ -206,3 +206,13 @@ D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\M
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Abstractions.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Physical.dll
 D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.AspNetCore.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.Extensions.Hosting.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.Extensions.Logging.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.Formatting.Compact.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.Settings.Configuration.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.Sinks.Console.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.Sinks.Debug.dll
+D:\Desktop\on github\stage-2-part-2\EcommerceApp\EcommerceApp\bin\Debug\net6.0\Serilog.Sinks.File.dll

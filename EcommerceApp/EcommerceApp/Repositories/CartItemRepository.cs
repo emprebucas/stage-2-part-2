@@ -15,8 +15,9 @@ namespace EcommerceApp.Repositories
     public class CartItemRepository : ICartItemRepository
     {
         private readonly ECommerceDbContext _dbContext;
-        private readonly IConfiguration _configuration;
         private readonly HttpContextHelper _httpContextHelper;
+        private readonly IConfiguration _configuration;
+        private readonly ILogger<CartItemRepository> _logger;
 
         /// <summary>
         /// The constructor takes the `ECommerceDbContext`, `IConfiguration`, and `HttpContextHelper` objects.
@@ -27,11 +28,13 @@ namespace EcommerceApp.Repositories
         /// <param name="dbContext"></param>
         /// <param name="configuration"></param>
         /// <param name="httpContextHelper"></param>
-        public CartItemRepository(ECommerceDbContext dbContext, IConfiguration configuration, HttpContextHelper httpContextHelper)
+        /// <param name="logger"></param>
+        public CartItemRepository(ECommerceDbContext dbContext, IConfiguration configuration, HttpContextHelper httpContextHelper, ILogger<CartItemRepository> logger)
         {
             _dbContext = dbContext;
             _configuration = configuration;
             _httpContextHelper = httpContextHelper;
+            _logger = logger;
         }
 
         /// <summary>
@@ -51,6 +54,7 @@ namespace EcommerceApp.Repositories
 
             if (order == null)
             {
+                _logger.LogError("Error retrieving cart items.");
                 throw new BadRequestException("User does not have a pending order.");
             }
 
@@ -59,6 +63,7 @@ namespace EcommerceApp.Repositories
             var cartQuery = "SELECT * FROM CartItems WHERE OrderId = @OrderId";
             var cartItems = await connection.QueryAsync<CartItemModel>(cartQuery, new { OrderId = orderId });
 
+            _logger.LogInformation("Cart items retrieved successfully.");
             return cartItems.AsList();
         }
 
@@ -76,6 +81,7 @@ namespace EcommerceApp.Repositories
             var userExists = await _dbContext.Users.AnyAsync(u => u.UserId == cartItem.UserId);
             if (!userExists)
             {
+                _logger.LogError("Error adding cart item.");
                 throw new BadRequestException("Cannot add cart item. User is not found.");
             }
 
@@ -86,6 +92,7 @@ namespace EcommerceApp.Repositories
 
                 if (userHasPendingOrder)
                 {
+                    _logger.LogError("Error adding cart item.");
                     throw new BadRequestException("Cannot add cart item. User already has a pending order.");
                 }
                 order = new OrderEntity
@@ -100,6 +107,7 @@ namespace EcommerceApp.Repositories
             }
             else if (order.Status != OrderStatusEntity.Pending)
             {
+                _logger.LogError("Error adding cart item.");
                 throw new BadRequestException("Cannot add cart item to the order. Order is already processed or cancelled.");
             }
             else if (order != null)
@@ -108,6 +116,7 @@ namespace EcommerceApp.Repositories
 
                 if (orderExistsForOtherUser)
                 {
+                    _logger.LogError("Error adding cart item.");
                     throw new BadRequestException("Cannot add cart item. Order already exists.");
                 }
             }
@@ -116,12 +125,13 @@ namespace EcommerceApp.Repositories
 
             if (cartItemExists)
             {
+                _logger.LogError("Error adding cart item.");
                 throw new BadRequestException("Cannot add cart item. Cart item already exists.");
             }
 
             _dbContext.CartItems.Add(cartItem);
             await _dbContext.SaveChangesAsync();
-
+            _logger.LogInformation("Cart item added successfully.");
         }
 
         /// <summary>
@@ -135,24 +145,27 @@ namespace EcommerceApp.Repositories
             var userExists = await _dbContext.Users.AnyAsync(u => u.UserId == cartItem.UserId);
             if (!userExists)
             {
+                _logger.LogError("Error updating cart item.");
                 throw new BadRequestException("Cannot update cart item. User is not found.");
             }
 
             var orderExists = await _dbContext.Orders.AnyAsync(o => o.OrderId == cartItem.OrderId && o.UserId == cartItem.UserId);
             if (!orderExists)
             {
+                _logger.LogError("Error updating cart item.");
                 throw new BadRequestException("Cannot update cart item. Order is not found for user.");
             }
 
             var cartItemExists = await _dbContext.CartItems.AnyAsync(c => c.CartItemId == cartItem.CartItemId && c.OrderId == cartItem.OrderId);
             if (!cartItemExists)
             {
+                _logger.LogError("Error updating cart item.");
                 throw new BadRequestException("Cannot update cart item. Cart item is not found for user.");
             }
 
             _dbContext.CartItems.Update(cartItem);
             await _dbContext.SaveChangesAsync();
-
+            _logger.LogInformation("Cart item updated successfully.");
         }
 
         /// <summary>
@@ -163,10 +176,17 @@ namespace EcommerceApp.Repositories
         /// <exception cref="BadRequestException"></exception>
         public async Task DeleteCartItemAsync(Guid cartItemId)
         {
-            var cartItem = await _dbContext.CartItems.FindAsync(cartItemId) ?? throw new BadRequestException("Cannot delete cart item. Cart item is not found.");
+            var cartItem = await _dbContext.CartItems.FindAsync(cartItemId);
+            
+            if (cartItem == null)
+            {
+                _logger.LogError("Error deleting cart item.");
+                throw new BadRequestException("Cannot delete cart item. Cart item is not found.");
+            }
+
             _dbContext.CartItems.Remove(cartItem);
             await _dbContext.SaveChangesAsync();
-
+            _logger.LogInformation("Cart item deleted successfully.");
         }
 
     }

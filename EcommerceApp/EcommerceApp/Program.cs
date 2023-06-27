@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System.Reflection;
 
 namespace EcommerceApp
@@ -24,6 +25,7 @@ namespace EcommerceApp
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
+            Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -39,6 +41,17 @@ namespace EcommerceApp
                     // Register your Autofac modules
                     builder.RegisterModule(new AutofacModule());
                 })
+                //.ConfigureLogging(logging =>
+                //{
+                //    //logging.ClearProviders();
+                //    //logging.AddSerilog(dispose: true);
+                //    logging.AddSerilog(); // Replace existing logging providers with Serilog
+                //})
+                .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
+                .ReadFrom.Configuration(hostingContext.Configuration)
+                .WriteTo.Console()
+                .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
+                .Enrich.FromLogContext())
                 // configures the application to use a JSON configuration file named "appsettings.json"
                 .ConfigureAppConfiguration((hostContext, config) =>
                 {

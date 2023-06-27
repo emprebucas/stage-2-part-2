@@ -1067,7 +1067,7 @@
             CartItemRepository provides the implementation for retrieving, adding, updating, and deleting cart items.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Repositories.CartItemRepository.#ctor(EcommerceApp.Data.ECommerceDbContext,Microsoft.Extensions.Configuration.IConfiguration,EcommerceApp.HttpContextHelper)">
+        <member name="M:EcommerceApp.Repositories.CartItemRepository.#ctor(EcommerceApp.Data.ECommerceDbContext,Microsoft.Extensions.Configuration.IConfiguration,EcommerceApp.HttpContextHelper,Microsoft.Extensions.Logging.ILogger{EcommerceApp.Repositories.CartItemRepository})">
             <summary>
             The constructor takes the `ECommerceDbContext`, `IConfiguration`, and `HttpContextHelper` objects.
             `ECommerceDbContext`: used to interact with the database using Entity Framework Core.
@@ -1077,6 +1077,7 @@
             <param name="dbContext"></param>
             <param name="configuration"></param>
             <param name="httpContextHelper"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:EcommerceApp.Repositories.CartItemRepository.GetAllCartItemsAsync">
             <summary>
@@ -1114,7 +1115,7 @@
             OrderRepository provides the implementation for retrieving, updating, checking out, and deleting orders.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Repositories.OrderRepository.#ctor(EcommerceApp.Data.ECommerceDbContext,Microsoft.Extensions.Configuration.IConfiguration,EcommerceApp.HttpContextHelper)">
+        <member name="M:EcommerceApp.Repositories.OrderRepository.#ctor(EcommerceApp.Data.ECommerceDbContext,Microsoft.Extensions.Configuration.IConfiguration,EcommerceApp.HttpContextHelper,Microsoft.Extensions.Logging.ILogger{EcommerceApp.Repositories.OrderRepository})">
             <summary>
             The constructor takes the `ECommerceDbContext`, `IConfiguration`, and `HttpContextHelper` objects.
             `ECommerceDbContext`: used to interact with the database using Entity Framework Core.
@@ -1124,6 +1125,7 @@
             <param name="dbContext"></param>
             <param name="configuration"></param>
             <param name="httpContextHelper"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:EcommerceApp.Repositories.OrderRepository.GetAllOrdersAsync">
             <summary>
@@ -1169,7 +1171,7 @@
             UserRepository provides the implementation for retrieving and adding users.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Repositories.UserRepository.#ctor(EcommerceApp.Data.ECommerceDbContext,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:EcommerceApp.Repositories.UserRepository.#ctor(EcommerceApp.Data.ECommerceDbContext,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.Extensions.Logging.ILogger{EcommerceApp.Repositories.UserRepository})">
             <summary>
             The constructor takes the `ECommerceDbContext` and `IConfiguration` objects.
             `ECommerceDbContext`: used to interact with the database using Entity Framework Core.
@@ -1177,6 +1179,7 @@
             </summary>
             <param name="dbContext"></param>
             <param name="configuration"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:EcommerceApp.Repositories.UserRepository.GetUserByIdAsync(System.Guid)">
             <summary>
