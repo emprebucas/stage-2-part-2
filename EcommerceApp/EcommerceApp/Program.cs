@@ -41,12 +41,6 @@ namespace EcommerceApp
                     // Register your Autofac modules
                     builder.RegisterModule(new AutofacModule());
                 })
-                //.ConfigureLogging(logging =>
-                //{
-                //    //logging.ClearProviders();
-                //    //logging.AddSerilog(dispose: true);
-                //    logging.AddSerilog(); // Replace existing logging providers with Serilog
-                //})
                 .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
                 .ReadFrom.Configuration(hostingContext.Configuration)
                 .WriteTo.Console()
@@ -86,13 +80,9 @@ namespace EcommerceApp
 
                         services.AddFluentValidationRulesToSwagger();
 
-                        //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
-
                         // adds Swagger for generating API documentation
                         services.AddSwaggerGen(c =>
                         {
-                            //c.SwaggerDoc("v1", new OpenApiInfo { Title = "Ecommerce API", Version = "v1" });
-
                             var provider = services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
 
                             foreach (var description in provider.ApiVersionDescriptions)
@@ -131,7 +121,6 @@ namespace EcommerceApp
                         app.UseSwagger();
                         app.UseSwaggerUI(c =>
                         {
-                            //c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ecommerce API V1");
                             var provider = app.ApplicationServices.GetRequiredService<IApiVersionDescriptionProvider>();
 
                             foreach (var description in provider.ApiVersionDescriptions.Reverse())

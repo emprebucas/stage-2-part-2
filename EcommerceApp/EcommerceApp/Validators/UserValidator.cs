@@ -13,16 +13,11 @@ namespace EcommerceApp.Validators
         /// </summary>
         public UserValidator()
         {
-            RuleFor(user => user.UserId != Guid.Empty)
-                //.Must(BeValidGuid).WithMessage("'UserId' is not a valid GUID.")
+            RuleFor(user => user.UserId)
                 .NotEmpty().WithMessage("'UserId' should not be empty.");
             RuleFor(user => user.Name)
                 .NotEmpty().WithMessage("'Name' should not be empty.");
         }
-
-        private bool BeValidGuid(Guid userId)
-        {
-            return Guid.TryParse(userId.ToString(), out _);
-        }
     }
+
 }

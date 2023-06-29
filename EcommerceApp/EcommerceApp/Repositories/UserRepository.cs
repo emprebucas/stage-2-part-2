@@ -1,11 +1,9 @@
 ﻿using Dapper;
 using EcommerceApp.Data;
-using EcommerceApp.Interfaces;
 using EcommerceApp.Entities;
+using EcommerceApp.Interfaces;
 using EcommerceApp.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
 using MySqlConnector;
 using SendGrid.Helpers.Errors.Model;
 

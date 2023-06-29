@@ -1,5 +1,6 @@
 ﻿using EcommerceApp.DTOs;
 using FluentValidation;
+using System;
 
 namespace EcommerceApp.Validators
 {
@@ -13,9 +14,12 @@ namespace EcommerceApp.Validators
         /// </summary>
         public OrderValidator()
         {
-            RuleFor(order => order.OrderId).NotEmpty();
-            RuleFor(order => order.UserId).NotEmpty().WithMessage("Please add the destination country");
-            RuleFor(order => order.Status).IsInEnum().WithMessage("Not enum");
+            RuleFor(order => order.OrderId)
+                .NotEmpty().WithMessage("'UserId' should not be empty.");
+            RuleFor(order => order.UserId)
+                .NotEmpty().WithMessage("'UserId' should not be empty.");
+            RuleFor(order => order.Status)
+                .NotNull().IsInEnum().WithMessage("Invalid status.");
         }
     }
 }

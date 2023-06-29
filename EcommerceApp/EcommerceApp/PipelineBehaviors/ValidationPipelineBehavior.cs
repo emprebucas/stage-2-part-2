@@ -44,6 +44,19 @@ namespace EcommerceApp.PipelineBehaviors
             return await next();
         }
 
+        //public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+        //{
+        //    var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+
+        //    if (!validationResult.IsValid)
+        //    {
+        //        var errors = validationResult.Errors;
+        //        throw new ValidationException("One or more validation errors occurred.", errors);
+        //    }
+
+        //    return await next();
+        //}
+
     }
 
 }

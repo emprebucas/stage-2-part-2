@@ -24,3 +24,19 @@
 2023-06-27 14:11:39.993 +08:00 [ERR] Error retrieving user.
 2023-06-27 14:11:49.174 +08:00 [INF] Orders retrieved successfully.
 2023-06-27 14:11:55.428 +08:00 [ERR] Error retrieving orders.
+2023-06-27 14:18:05.490 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization header.
+2023-06-27 14:18:23.675 +08:00 [ERR] Error adding user.
+2023-06-27 14:18:32.801 +08:00 [INF] User retrieved successfully.
+2023-06-27 14:18:47.271 +08:00 [INF] Order retrieved successfully.
+2023-06-27 14:18:57.343 +08:00 [ERR] Error retrieving order.
+2023-06-27 14:19:06.407 +08:00 [ERR] Error updating order.
+2023-06-27 14:19:38.612 +08:00 [ERR] Error updating order.
+2023-06-27 14:20:13.777 +08:00 [INF] Order updated successfully.
+2023-06-27 14:20:44.065 +08:00 [INF] Cart item added successfully.
+2023-06-27 14:21:02.653 +08:00 [INF] Cart item added successfully.
+2023-06-27 14:21:23.187 +08:00 [INF] Cart item deleted successfully.
+2023-06-27 14:21:42.955 +08:00 [ERR] Error checking out order.
+2023-06-27 16:46:59.024 +08:00 [INF] User retrieved successfully.
+2023-06-27 16:47:07.358 +08:00 [INF] User retrieved successfully.
+2023-06-27 16:47:10.707 +08:00 [ERR] Error retrieving user.
+2023-06-27 16:58:06.339 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization header.

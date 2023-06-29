@@ -7,15 +7,18 @@ namespace EcommerceApp.Validators
     /// 
     /// </summary>
     public class AddUserCommandValidator : AbstractValidator<AddUserCommand>
-
     {
         /// <summary>
         /// 
         /// </summary>
         public AddUserCommandValidator()
         {
-            RuleFor(newUser => newUser.User).NotEmpty().WithMessage("User");
+            RuleFor(newUser => newUser.User)
+                .NotEmpty().WithMessage("'User' should not be emptaayyyy.");
+            //RuleFor(newUser => newUser.UserId)
+            //    .NotEmpty().WithMessage("'UserId' should not be emptaayyyy.");
+            //RuleFor(newUser => newUser.Name)
+            //    .NotEmpty().WithMessage("'Name' should not be emptyyyy.");
         }
-
     }
 }

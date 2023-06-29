@@ -12,5 +12,6 @@ namespace EcommerceApp.Commands
         /// Property `User` of type `UserDto` which contains information about the user to be added.
         /// </summary>
         public UserDto? User { get; set; }
+
     }
 }

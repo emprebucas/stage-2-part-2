@@ -10,8 +10,6 @@ using EcommerceApp.Validators;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Serilog;
-using Serilog.Extensions.Logging;
 
 namespace EcommerceApp.DependencyInjection
 {
@@ -36,58 +34,14 @@ namespace EcommerceApp.DependencyInjection
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<GetAllOrdersQueryValidator>()
-                .As<IValidator<GetAllOrdersQuery>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<GetOrderByIdQueryValidator>()
-                .As<IValidator<GetOrderByIdQuery>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<UpdateOrderCommandValidator>()
-                .As<IValidator<UpdateOrderCommand>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<CheckoutOrderCommandValidator>()
-                .As<IValidator<CheckoutOrderCommand>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<DeleteOrderCommandValidator>()
-                .As<IValidator<DeleteOrderCommand>>()
-                .InstancePerLifetimeScope();
-
             builder.RegisterAssemblyTypes(typeof(CartItemValidator).Assembly)
                 .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
                 .AsImplementedInterfaces()
                 .InstancePerLifetimeScope();
 
-            builder.RegisterType<CartItemQueryValidator>()
-                .As<IValidator<CartItemQuery>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<AddCartItemCommandValidator>()
-                .As<IValidator<AddCartItemCommand>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<UpdateCartItemCommandValidator>()
-                .As<IValidator<UpdateCartItemCommand>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<DeleteCartItemCommandValidator>()
-                .As<IValidator<DeleteCartItemCommand>>()
-                .InstancePerLifetimeScope();
-
             builder.RegisterAssemblyTypes(typeof(UserValidator).Assembly)
                 .Where(t => t.IsClosedTypeOf(typeof(IValidator<>)))
                 .AsImplementedInterfaces()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<GetUserByIdQueryValidator>()
-                .As<IValidator<GetUserByIdQuery>>()
-                .InstancePerLifetimeScope();
-
-            builder.RegisterType<AddUserCommandValidator>()
-                .As<IValidator<AddUserCommand>>()
                 .InstancePerLifetimeScope();
 
             // Register ValidationPipelineBehavior
@@ -140,19 +94,6 @@ namespace EcommerceApp.DependencyInjection
             // Register HttpContextAccessor and HttpContextHelper
             builder.RegisterType<HttpContextAccessor>().As<IHttpContextAccessor>().SingleInstance();
             builder.RegisterType<HttpContextHelper>().SingleInstance();
-
-            //builder.Register(ctx =>
-            //{
-            //    var loggerFactory = new SerilogLoggerFactory();
-            //    var logger = new LoggerConfiguration()
-            //        // Configure Serilog here as needed
-            //        .CreateLogger();
-
-            //    loggerFactory.AddSerilog(logger);
-
-            //    return loggerFactory.CreateLogger<UserRepository>();
-            //}).As<ILogger<UserRepository>>().InstancePerLifetimeScope();
-
 
             base.Load(builder);
         }
