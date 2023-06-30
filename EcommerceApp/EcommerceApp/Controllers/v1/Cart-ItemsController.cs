@@ -62,7 +62,7 @@ namespace EcommerceApp.Controllers.v1
             try
             {
                 await _mediator.Send(command);
-                return Ok("Cart item added successfully.");
+                return Ok("[version 1] Cart item added successfully.");
             }
             catch (BadRequestException ex)
             {
@@ -83,7 +83,7 @@ namespace EcommerceApp.Controllers.v1
             try
             {
                 await _mediator.Send(command);
-                return Ok("Cart item updated successfully.");
+                return Ok("[version 1] Cart item updated successfully.");
             }
             catch (BadRequestException ex)
             {
@@ -104,7 +104,7 @@ namespace EcommerceApp.Controllers.v1
             try
             {
                 await _mediator.Send(command);
-                return Ok("Cart item deleted successfully.");
+                return Ok("[version 1] Cart item deleted successfully.");
             }
             catch (BadRequestException ex)
             {

@@ -16,6 +16,6 @@ namespace EcommerceApp.Validators
         {
             RuleFor(newCartItem => newCartItem.CartItem).NotEmpty().WithMessage("CartItem");
         }
-        
+
     }
 }

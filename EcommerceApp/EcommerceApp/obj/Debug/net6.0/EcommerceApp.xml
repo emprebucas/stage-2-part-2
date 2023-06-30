@@ -19,12 +19,14 @@
         </member>
         <member name="T:EcommerceApp.DependencyInjection.AutofacModule">
             <summary>
-            
+            The `AutofacModule` class serves as a module that can be loaded into the Autofac container builder to configure the application's dependency injection container. 
+            The registrations ensure that the required dependencies are resolved correctly and available for use throughout the application.
             </summary>
         </member>
         <member name="M:EcommerceApp.DependencyInjection.AutofacModule.Load(Autofac.ContainerBuilder)">
             <summary>
-            
+            In the`Load` method, it registers the types from the application assembly as closed types of `IRequestHandler` interface. 
+            This registration allows MediatR to resolve and execute the request handlers.
             </summary>
             <param name="builder"></param>
         </member>
@@ -664,12 +666,12 @@
         </member>
         <member name="T:EcommerceApp.FluentValidationOperationFilter">
             <summary>
-            
+            FluentValidationOperationFilter automatically adds documentation for validation errors and required parameters based on the FluentValidation validators associated with the API methods
             </summary>
         </member>
         <member name="M:EcommerceApp.FluentValidationOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
             <summary>
-            
+            The Apply method is called during the Swagger document generation process.
             </summary>
             <param name="operation"></param>
             <param name="context"></param>
@@ -914,20 +916,21 @@
         </member>
         <member name="T:EcommerceApp.PipelineBehaviors.ValidationPipelineBehavior`2">
             <summary>
-            
+            ValidationPipelineBehavior is a pipeline behavior class for validation using FluentValidation in combination with MediatR
             </summary>
             <typeparam name="TRequest"></typeparam>
             <typeparam name="TResponse"></typeparam>
         </member>
         <member name="M:EcommerceApp.PipelineBehaviors.ValidationPipelineBehavior`2.#ctor(FluentValidation.IValidator{`0})">
             <summary>
-            
+            The class takes an instance of IValidator TRequest as a constructor parameter. 
+            This allows the behavior to validate the incoming request of type TRequest using the specified validator.
             </summary>
             <param name="validator"></param>
         </member>
         <member name="M:EcommerceApp.PipelineBehaviors.ValidationPipelineBehavior`2.Handle(`0,MediatR.RequestHandlerDelegate{`1},System.Threading.CancellationToken)">
             <summary>
-            
+            Handle is the main method of the pipeline behavior, where the actual validation is performed.
             </summary>
             <param name="request"></param>
             <param name="cancellationToken"></param>
@@ -942,8 +945,7 @@
         </member>
         <member name="M:EcommerceApp.Program.Main(System.String[])">
             <summary>
-            The `Main` method is the starting point of the program. 
-            It calls the `CreateHostBuilder` method to build and run the web application.
+            The `Main` method is the starting point of the program.
             </summary>
             <param name="args"></param>
         </member>
@@ -1230,12 +1232,14 @@
         </member>
         <member name="T:EcommerceApp.Validators.CartItemValidator">
             <summary>
-            
+            CartItemValidator is validator class for the `CartItemDto` class using FluentValidation.
+            It validates instances of the `CartItemDto` class and ensure that the 
+            `CartItemId`, `OrderId`, `UserId`, `Item`, and `Price` properties meet the specified validation rules.
             </summary>
         </member>
         <member name="M:EcommerceApp.Validators.CartItemValidator.#ctor">
             <summary>
-            
+            The CartItemValidator constructor has validation rules that are defined using the `RuleFor` method.
             </summary>
         </member>
         <member name="T:EcommerceApp.Validators.CheckoutOrderCommandValidator">
@@ -1300,12 +1304,14 @@
         </member>
         <member name="T:EcommerceApp.Validators.OrderValidator">
             <summary>
-            
+            OrderValidator is validator class for the `OrderDto` class using FluentValidation.
+            It validates instances of the `OrderDto` class and ensure that the 
+            `OrderId`, `UserId`, and `Status` properties meet the specified validation rules.
             </summary>
         </member>
         <member name="M:EcommerceApp.Validators.OrderValidator.#ctor">
             <summary>
-            
+            The OrderValidator constructor has validation rules that are defined using the `RuleFor` method.
             </summary>
         </member>
         <member name="T:EcommerceApp.Validators.UpdateCartItemCommandValidator">
@@ -1330,12 +1336,14 @@
         </member>
         <member name="T:EcommerceApp.Validators.UserValidator">
             <summary>
-            
+            UserValidator is validator class for the `UserDto` class using FluentValidation.
+            It validates instances of the `UserDto` class and ensure that the 
+            `UserId` and `Name` properties meet the specified validation rules.
             </summary>
         </member>
         <member name="M:EcommerceApp.Validators.UserValidator.#ctor">
             <summary>
-            
+            The UserValidator constructor has validation rules that are defined using the `RuleFor` method.
             </summary>
         </member>
     </members>

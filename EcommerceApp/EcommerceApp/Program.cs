@@ -7,6 +7,7 @@ using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using System.Reflection;
@@ -19,13 +20,15 @@ namespace EcommerceApp
     public class Program
     {
         /// <summary>
-        /// The `Main` method is the starting point of the program. 
-        /// It calls the `CreateHostBuilder` method to build and run the web application.
+        /// The `Main` method is the starting point of the program.
         /// </summary>
         /// <param name="args"></param>
         public static void Main(string[] args)
         {
+            // configures the Serilog logger to write logs to the console and a log file
             Log.Logger = new LoggerConfiguration().WriteTo.Console().CreateLogger();
+
+            // builds and runs the web application
             CreateHostBuilder(args).Build().Run();
         }
 
@@ -35,17 +38,19 @@ namespace EcommerceApp
         /// <param name="args"></param>
         /// <returns></returns>
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args).UseServiceProviderFactory(new AutofacServiceProviderFactory()) // Use Autofac as the service provider
+            Host.CreateDefaultBuilder(args).UseServiceProviderFactory(new AutofacServiceProviderFactory()) // use Autofac as the service provider
+                // configures the Autofac container builder
                 .ConfigureContainer<ContainerBuilder>(builder =>
                 {
-                    // Register your Autofac modules
+                    // registers AutofacModule which is responsible for registering dependencies and configuring the container
                     builder.RegisterModule(new AutofacModule());
                 })
+                // configures Serilog as the logging provider
                 .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
-                .ReadFrom.Configuration(hostingContext.Configuration)
-                .WriteTo.Console()
-                .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day)
-                .Enrich.FromLogContext())
+                    .ReadFrom.Configuration(hostingContext.Configuration) // reads the Serilog configuration from the hosting context's configuration
+                    .WriteTo.Console() // configures Serilog to write log events to the console output
+                    .WriteTo.File("logs/log.txt", rollingInterval: RollingInterval.Day) // configures Serilog to write log events to a file located at `"logs/log.txt"`, a new log file is created each day
+                    .Enrich.FromLogContext()) // enriches log events with contextual information from the log context (includes information such as the timestamp, log level, etc.)
                 // configures the application to use a JSON configuration file named "appsettings.json"
                 .ConfigureAppConfiguration((hostContext, config) =>
                 {
@@ -62,6 +67,7 @@ namespace EcommerceApp
                         services.AddControllers();
                         services.AddEndpointsApiExplorer();
 
+                        // sets up API versioning
                         services.AddApiVersioning(options =>
                         {
                             options.ReportApiVersions = true;
@@ -69,27 +75,33 @@ namespace EcommerceApp
                             options.AssumeDefaultVersionWhenUnspecified = true;
                         });
 
+                        // adds API version exploration support
                         services.AddVersionedApiExplorer(options =>
                         {
                             options.GroupNameFormat = "'v'VVV";
                             options.SubstituteApiVersionInUrl = true;
                         });
 
-                        // Add FV to Asp.net
+                        // adds FluentValidation for automatic validation
                         services.AddFluentValidationAutoValidation();
 
+                        // adds FluentValidation rules to Swagger so that validation rules are included in the generated documentation
                         services.AddFluentValidationRulesToSwagger();
 
                         // adds Swagger for generating API documentation
                         services.AddSwaggerGen(c =>
                         {
+                            // gets the available API version descriptions
                             var provider = services.BuildServiceProvider().GetRequiredService<IApiVersionDescriptionProvider>();
 
+                            // iterates over the available API version descriptions
                             foreach (var description in provider.ApiVersionDescriptions)
                             {
+                                // defines a Swagger document for each API version
                                 c.SwaggerDoc(description.GroupName, new OpenApiInfo { Title = "Ecommerce API", Version = description.ApiVersion.ToString() });
                             }
 
+                            // registers the `FluentValidationOperationFilter` class as an operation filter for Swagger which integrates FluentValidation with Swagger and ensures that validation rules are included in the generated documentation for all API operations
                             c.OperationFilter<FluentValidationOperationFilter>();
 
                             // registers the `AddCustomHeaderParameter` class as an operation filter for Swagger

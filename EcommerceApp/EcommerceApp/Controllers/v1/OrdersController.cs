@@ -89,7 +89,7 @@ namespace EcommerceApp.Controllers.v1
             try
             {
                 await _mediator.Send(command);
-                return Ok("Order updated successfully.");
+                return Ok("[version 1] Order updated successfully.");
             }
             catch (BadRequestException ex)
             {
@@ -110,7 +110,7 @@ namespace EcommerceApp.Controllers.v1
             try
             {
                 await _mediator.Send(command);
-                return Ok("Order deleted successfully.");
+                return Ok("[version 1] Order deleted successfully.");
             }
             catch (BadRequestException ex)
             {

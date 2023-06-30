@@ -121,7 +121,7 @@ namespace EcommerceApp.Repositories
                 }
             }
 
-            var cartItemExists = await _dbContext.CartItems.AnyAsync(c => c.UserId == cartItem.UserId && c.OrderId == cartItem.OrderId && c.CartItemId == cartItem.CartItemId);
+            var cartItemExists = await _dbContext.CartItems.AnyAsync(c => c.CartItemId == cartItem.CartItemId);
 
             if (cartItemExists)
             {

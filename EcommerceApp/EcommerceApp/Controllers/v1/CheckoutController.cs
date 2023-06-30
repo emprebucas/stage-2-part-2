@@ -41,7 +41,7 @@ namespace EcommerceApp.Controllers.v1
             try
             {
                 await _mediator.Send(command);
-                return Ok("Order checked out successfully.");
+                return Ok("[version 1] Order checked out successfully.");
             }
             catch (BadRequestException ex)
             {

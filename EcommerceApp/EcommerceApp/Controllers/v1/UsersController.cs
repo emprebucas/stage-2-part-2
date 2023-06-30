@@ -68,7 +68,7 @@ namespace EcommerceApp.Controllers
             try
             {
                 await _mediator.Send(command);
-                return Ok("User added successfully.");
+                return Ok("[version 1] User added successfully.");
             }
             catch (BadRequestException ex)
             {

@@ -1,0 +1,14 @@
+2023-06-30 13:05:05.853 +08:00 [INF] User added successfully.
+2023-06-30 13:05:38.732 +08:00 [ERR] Error adding user.
+2023-06-30 13:05:49.637 +08:00 [INF] User added successfully.
+2023-06-30 13:06:43.936 +08:00 [ERR] Error adding user.
+2023-06-30 13:06:49.445 +08:00 [INF] User added successfully.
+2023-06-30 13:51:50.175 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Missing Authorization header.
+2023-06-30 16:32:31.105 +08:00 [ERR] Error adding cart item.
+2023-06-30 16:33:28.562 +08:00 [INF] Cart item added successfully.
+2023-06-30 16:38:44.244 +08:00 [ERR] Error adding cart item.
+2023-06-30 16:47:23.527 +08:00 [ERR] Error adding cart item.
+2023-06-30 16:50:14.280 +08:00 [INF] Cart item added successfully.
+2023-06-30 16:52:54.769 +08:00 [INF] User retrieved successfully.
+2023-06-30 16:53:02.642 +08:00 [ERR] Error retrieving cart items.
+2023-06-30 16:53:10.724 +08:00 [INF] Cart items retrieved successfully.
