@@ -51,11 +51,11 @@ namespace EcommerceApp.Repositories
 
             if (user == null)
             {
-                _logger.LogError("Error retrieving user.");
+                _logger.LogError("Repository: Error retrieving user.");
                 throw new BadRequestException("User does not exist.");
             }
 
-            _logger.LogInformation("User retrieved successfully.");
+            _logger.LogInformation("Repository: User retrieved successfully.");
             return user;
         }
 
@@ -71,13 +71,13 @@ namespace EcommerceApp.Repositories
 
             if (userExists)
             {
-                _logger.LogError("Error adding user.");
+                _logger.LogError("Repository: Error adding user.");
                 throw new BadRequestException("Cannot add user. User already exists.");
             }
 
             _dbContext.Users.Add(user);
             await _dbContext.SaveChangesAsync();
-            _logger.LogInformation("User added successfully.");
+            _logger.LogInformation("Repository: User added successfully.");
         }
     }
 

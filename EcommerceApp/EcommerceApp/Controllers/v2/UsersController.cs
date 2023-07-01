@@ -18,15 +18,18 @@ namespace EcommerceApp.Controllers.v2
     [ApiController]
     public class UsersController : ControllerBase
     {
+        private readonly ILogger<UsersController> _logger;
         private readonly IMediator _mediator;
 
         /// <summary>
         /// The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
         /// </summary>
         /// <param name="mediator"></param>
-        public UsersController(IMediator mediator)
+        /// <param name="logger"></param>
+        public UsersController(IMediator mediator, ILogger<UsersController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         /// <summary>
@@ -45,12 +48,15 @@ namespace EcommerceApp.Controllers.v2
 
                 if (user == null)
                 {
+                    _logger.LogError("Controller: Error retrieving user.");
                     return NotFound();
                 }
+                _logger.LogInformation("Controller: User retrieved successfully.");
                 return Ok(user);
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: { ex.Message }");
                 return BadRequest(ex.Message);
             }
         }
@@ -68,10 +74,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 await _mediator.Send(command);
+                _logger.LogInformation("Controller: User added successfully.");
                 return Ok("User added successfully.");
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }

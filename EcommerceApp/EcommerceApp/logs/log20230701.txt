@@ -1,0 +1,75 @@
+2023-07-01 16:06:02.521 +08:00 [ERR] Error adding user.
+2023-07-01 16:06:10.382 +08:00 [INF] User added successfully.
+2023-07-01 16:06:29.480 +08:00 [INF] User added successfully.
+2023-07-01 16:33:02.691 +08:00 [INF] Repository: User retrieved successfully.
+2023-07-01 16:33:02.746 +08:00 [INF] Controller: User retrieved successfully.
+2023-07-01 16:33:16.461 +08:00 [ERR] Repository: Error retrieving user.
+2023-07-01 16:33:16.692 +08:00 [ERR] User does not exist.
+2023-07-01 16:35:14.620 +08:00 [INF] Repository: User retrieved successfully.
+2023-07-01 16:35:14.678 +08:00 [INF] Controller: User retrieved successfully.
+2023-07-01 16:35:20.379 +08:00 [ERR] Repository: Error retrieving user.
+2023-07-01 16:35:20.601 +08:00 [ERR] Controller: 
+2023-07-01 16:35:30.092 +08:00 [INF] Repository: User retrieved successfully.
+2023-07-01 16:35:30.094 +08:00 [INF] Controller: User retrieved successfully.
+2023-07-01 16:36:24.450 +08:00 [ERR] Repository: Error retrieving user.
+2023-07-01 16:36:24.776 +08:00 [ERR] Controller: { ex.Message }
+2023-07-01 16:45:31.305 +08:00 [ERR] Repository: Error retrieving user.
+2023-07-01 16:45:31.648 +08:00 [ERR] Controller: User does not exist.
+2023-07-01 17:01:45.494 +08:00 [ERR] Repository: Error adding user.
+2023-07-01 17:01:45.907 +08:00 [ERR] Controller: Cannot add user. User already exists.
+2023-07-01 17:01:56.736 +08:00 [INF] Repository: User added successfully.
+2023-07-01 17:01:56.740 +08:00 [INF] Controller: User added successfully.
+2023-07-01 17:02:05.512 +08:00 [INF] Repository: User retrieved successfully.
+2023-07-01 17:02:05.519 +08:00 [INF] Controller: User retrieved successfully.
+2023-07-01 17:02:11.909 +08:00 [ERR] Repository: Error retrieving user.
+2023-07-01 17:02:12.127 +08:00 [ERR] Controller: User does not exist.
+2023-07-01 17:02:21.445 +08:00 [ERR] Error retrieving cart items.
+2023-07-01 17:02:21.715 +08:00 [ERR] Controller: User does not have a pending order.
+2023-07-01 17:02:42.096 +08:00 [INF] Cart items retrieved successfully.
+2023-07-01 17:02:42.103 +08:00 [INF] Controller: Cart items retrieved successfully.
+2023-07-01 17:06:25.216 +08:00 [ERR] Repository: Error adding cart item.
+2023-07-01 17:06:25.518 +08:00 [ERR] Controller: Cannot add cart item to the order. Order is already processed or cancelled.
+2023-07-01 17:17:37.919 +08:00 [ERR] Repository: Error adding cart item.
+2023-07-01 17:17:38.224 +08:00 [ERR] Controller: Cannot add cart item to the order. Order is already processed or cancelled.
+2023-07-01 17:21:37.076 +08:00 [ERR] Repository: Error adding cart item.
+2023-07-01 17:21:37.415 +08:00 [ERR] Controller: Cannot add cart item. Order already exists.
+2023-07-01 17:22:51.774 +08:00 [ERR] Repository: Error adding cart item.
+2023-07-01 17:22:52.105 +08:00 [ERR] Controller: Cannot add cart item. User already has a pending order.
+2023-07-01 17:23:05.537 +08:00 [ERR] Repository: Error adding cart item.
+2023-07-01 17:23:05.872 +08:00 [ERR] Controller: Cannot add cart item. User is not found.
+2023-07-01 17:23:32.026 +08:00 [ERR] Repository: Error adding cart item.
+2023-07-01 17:23:32.468 +08:00 [ERR] Controller: Cannot add cart item to the order. Order is already processed or cancelled.
+2023-07-01 17:23:58.682 +08:00 [ERR] Repository: Error adding cart item.
+2023-07-01 17:23:59.266 +08:00 [ERR] Controller: Cannot add cart item to the order. Order is already processed or cancelled.
+2023-07-01 17:24:21.657 +08:00 [ERR] Repository: Error adding cart item.
+2023-07-01 17:24:22.110 +08:00 [ERR] Controller: Cannot add cart item. Cart item already exists.
+2023-07-01 17:24:37.952 +08:00 [INF] Repository: Cart item added successfully.
+2023-07-01 17:24:37.955 +08:00 [INF] Controller: Cart item added successfully.
+2023-07-01 17:25:15.938 +08:00 [ERR] Repository: Error updating cart item.
+2023-07-01 17:25:16.300 +08:00 [ERR] Controller: Cannot update cart item. Order is not found for user.
+2023-07-01 17:25:23.530 +08:00 [ERR] Repository: Error updating cart item.
+2023-07-01 17:25:23.861 +08:00 [ERR] Controller: Cannot update cart item. User is not found.
+2023-07-01 17:26:01.297 +08:00 [INF] Repository: Cart item updated successfully.
+2023-07-01 17:26:01.304 +08:00 [INF] Cart item updated successfully.
+2023-07-01 17:27:52.379 +08:00 [ERR] Repository: Error updating cart item.
+2023-07-01 17:27:52.714 +08:00 [ERR] Controller: Cannot update cart item. Cart item is not found for user.
+2023-07-01 17:28:23.965 +08:00 [ERR] Repository: Error deleting cart item.
+2023-07-01 17:28:24.508 +08:00 [ERR] Controller: Cannot delete cart item. Cart item is not found.
+2023-07-01 17:28:30.526 +08:00 [INF] Repository: Cart item deleted successfully.
+2023-07-01 17:28:30.532 +08:00 [INF] Controller: Cart item deleted successfully.
+2023-07-01 17:28:43.292 +08:00 [ERR] Repository: Error retrieving orders.
+2023-07-01 17:28:43.705 +08:00 [ERR] Controller: User does not have any order.
+2023-07-01 17:28:50.816 +08:00 [INF] Repository: Orders retrieved successfully.
+2023-07-01 17:28:50.819 +08:00 [INF] Controller: Orders retrieved successfully.
+2023-07-01 17:29:23.487 +08:00 [INF] BasicAuthentication was not authenticated. Failure message: Invalid Authorization header. User is null
+2023-07-01 17:29:23.515 +08:00 [INF] AuthenticationScheme: BasicAuthentication was challenged.
+2023-07-01 17:29:38.347 +08:00 [ERR] Repository: Error retrieving order.
+2023-07-01 17:29:38.717 +08:00 [ERR] Controller: Order does not exist.
+2023-07-01 17:30:00.077 +08:00 [ERR] Repository: Error retrieving order.
+2023-07-01 17:30:00.322 +08:00 [ERR] Controller: Order does not exist.
+2023-07-01 17:30:04.314 +08:00 [ERR] Repository: Error retrieving order.
+2023-07-01 17:30:04.542 +08:00 [ERR] Controller: Order does not exist.
+2023-07-01 17:30:10.338 +08:00 [INF] Repository: Order retrieved successfully.
+2023-07-01 17:30:10.342 +08:00 [INF] Controller: Order retrieved successfully.
+2023-07-01 17:30:21.162 +08:00 [ERR] Repository: Error updating order.
+2023-07-01 17:30:21.501 +08:00 [ERR] Controller: Cannot update order. Order does not exist for this user.

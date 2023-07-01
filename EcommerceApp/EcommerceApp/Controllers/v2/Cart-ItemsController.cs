@@ -5,7 +5,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SendGrid.Helpers.Errors.Model;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace EcommerceApp.Controllers.v2
 {
@@ -19,15 +18,18 @@ namespace EcommerceApp.Controllers.v2
     [ApiController]
     public class Cart_ItemsController : ControllerBase
     {
+        private readonly ILogger<Cart_ItemsController> _logger;
         private readonly IMediator _mediator;
 
         /// <summary>
         /// The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
         /// </summary>
         /// <param name="mediator"></param>
-        public Cart_ItemsController(IMediator mediator)
+        /// <param name="logger"></param>
+        public Cart_ItemsController(IMediator mediator, ILogger<Cart_ItemsController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         /// <summary>
@@ -41,10 +43,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 var cartItems = await _mediator.Send(query);
+                _logger.LogInformation("Controller: Cart items retrieved successfully.");
                 return Ok(cartItems);
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -62,10 +66,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 await _mediator.Send(command);
+                _logger.LogInformation("Controller: Cart item added successfully.");
                 return Ok("Cart item added successfully.");
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -83,10 +89,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 await _mediator.Send(command);
+                _logger.LogInformation("Controller: Cart item updated successfully.");
                 return Ok("Cart item updated successfully.");
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -104,10 +112,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 await _mediator.Send(command);
+                _logger.LogInformation("Controller: Cart item deleted successfully.");
                 return Ok("Cart item deleted successfully.");
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }

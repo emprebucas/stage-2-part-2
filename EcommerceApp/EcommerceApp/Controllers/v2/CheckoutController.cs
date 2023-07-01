@@ -17,15 +17,18 @@ namespace EcommerceApp.Controllers.v2
     [ApiController]
     public class CheckoutController : ControllerBase
     {
+        private readonly ILogger<CheckoutController> _logger;
         private readonly IMediator _mediator;
 
         /// <summary>
         /// The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
         /// </summary>
         /// <param name="mediator"></param>
-        public CheckoutController(IMediator mediator)
+        /// <param name="logger"></param>
+        public CheckoutController(IMediator mediator, ILogger<CheckoutController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         /// <summary>
@@ -41,10 +44,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 await _mediator.Send(command);
+                _logger.LogInformation("Controller: Order checked out successfully.");
                 return Ok("Order checked out successfully.");
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
 

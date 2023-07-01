@@ -354,11 +354,12 @@
             It uses the MediatR library for handling commands and queries.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Controllers.v2.Cart_ItemsController.#ctor(MediatR.IMediator)">
+        <member name="M:EcommerceApp.Controllers.v2.Cart_ItemsController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EcommerceApp.Controllers.v2.Cart_ItemsController})">
             <summary>
             The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
             </summary>
             <param name="mediator"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:EcommerceApp.Controllers.v2.Cart_ItemsController.GetAllCartItems">
             <summary>
@@ -393,11 +394,12 @@
             It uses the MediatR library for handling commands and queries.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Controllers.v2.CheckoutController.#ctor(MediatR.IMediator)">
+        <member name="M:EcommerceApp.Controllers.v2.CheckoutController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EcommerceApp.Controllers.v2.CheckoutController})">
             <summary>
             The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
             </summary>
             <param name="mediator"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:EcommerceApp.Controllers.v2.CheckoutController.CheckoutOrder(EcommerceApp.DTOs.OrderDto)">
             <summary>
@@ -412,11 +414,12 @@
             It uses the MediatR library for handling commands and queries.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Controllers.v2.OrdersController.#ctor(MediatR.IMediator)">
+        <member name="M:EcommerceApp.Controllers.v2.OrdersController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EcommerceApp.Controllers.v2.OrdersController})">
             <summary>
             The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
             </summary>
             <param name="mediator"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:EcommerceApp.Controllers.v2.OrdersController.GetAllOrders">
             <summary>
@@ -451,11 +454,12 @@
             It uses the MediatR library for handling commands and queries.
             </summary>
         </member>
-        <member name="M:EcommerceApp.Controllers.v2.UsersController.#ctor(MediatR.IMediator)">
+        <member name="M:EcommerceApp.Controllers.v2.UsersController.#ctor(MediatR.IMediator,Microsoft.Extensions.Logging.ILogger{EcommerceApp.Controllers.v2.UsersController})">
             <summary>
             The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
             </summary>
             <param name="mediator"></param>
+            <param name="logger"></param>
         </member>
         <member name="M:EcommerceApp.Controllers.v2.UsersController.GetUserById(System.Guid)">
             <summary>
@@ -666,7 +670,7 @@
         </member>
         <member name="T:EcommerceApp.FluentValidationOperationFilter">
             <summary>
-            FluentValidationOperationFilter automatically adds documentation for validation errors and required parameters based on the FluentValidation validators associated with the API methods
+            FluentValidationOperationFilter automatically adds documentation for validation errors and required parameters based on the FluentValidation validators.
             </summary>
         </member>
         <member name="M:EcommerceApp.FluentValidationOperationFilter.Apply(Microsoft.OpenApi.Models.OpenApiOperation,Swashbuckle.AspNetCore.SwaggerGen.OperationFilterContext)">
@@ -916,7 +920,9 @@
         </member>
         <member name="T:EcommerceApp.PipelineBehaviors.ValidationPipelineBehavior`2">
             <summary>
-            ValidationPipelineBehavior is a pipeline behavior class for validation using FluentValidation in combination with MediatR
+            ValidationPipelineBehavior is a pipeline behavior class for validation using FluentValidation in combination with MediatR.
+            It implements the `IPipelineBehavior TRequest, TResponse` interface provided by MediatR. 
+            This interface allows for the creation of custom pipeline behaviors that can be executed before and after the handling of requests.
             </summary>
             <typeparam name="TRequest"></typeparam>
             <typeparam name="TResponse"></typeparam>

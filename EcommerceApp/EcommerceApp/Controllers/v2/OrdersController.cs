@@ -18,15 +18,18 @@ namespace EcommerceApp.Controllers.v2
     [ApiController]
     public class OrdersController : ControllerBase
     {
+        private readonly ILogger<OrdersController> _logger;
         private readonly IMediator _mediator;
 
         /// <summary>
         /// The constructor takes `IMediator` which allows the controller to use MediatR for handling commands and queries.
         /// </summary>
         /// <param name="mediator"></param>
-        public OrdersController(IMediator mediator)
+        /// <param name="logger"></param>
+        public OrdersController(IMediator mediator, ILogger<OrdersController> logger)
         {
             _mediator = mediator;
+            _logger = logger;
         }
 
         /// <summary>
@@ -41,11 +44,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 var orders = await _mediator.Send(query);
-
+                _logger.LogInformation("Controller: Orders retrieved successfully.");
                 return Ok(orders);
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -66,12 +70,15 @@ namespace EcommerceApp.Controllers.v2
 
                 if (order == null)
                 {
+                    _logger.LogInformation("Controller: Error retrieving order.");
                     return NotFound();
                 }
+                _logger.LogInformation("Controller: Order retrieved successfully.");
                 return Ok(order);
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -89,10 +96,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 await _mediator.Send(command);
+                _logger.LogInformation("Controller: Order updated successfully.");
                 return Ok("Order updated successfully.");
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
@@ -110,10 +119,12 @@ namespace EcommerceApp.Controllers.v2
             try
             {
                 await _mediator.Send(command);
+                _logger.LogInformation("Controller: Order deleted successfully.");
                 return Ok("Order deleted successfully.");
             }
             catch (BadRequestException ex)
             {
+                _logger.LogError($"Controller: {ex.Message}");
                 return BadRequest(ex.Message);
             }
         }
